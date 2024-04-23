@@ -56,7 +56,7 @@ class Cars(models.Model):
     year = models.IntegerField(null=True, blank=True)
     horsepower = models.IntegerField(null=True, blank=True)
     kw = models.IntegerField(null=True, blank=True)
-    color = models.CharField(null=True, blank=True)
+    color = models.CharField(max_length=50, null=True, blank=True)
 
     def __str__(self):
         return (f'Модель - {self.model}'
