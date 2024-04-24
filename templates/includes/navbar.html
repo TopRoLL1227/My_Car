@@ -5,19 +5,22 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="{% url 'main' %}" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'login' %}" class="nav-link">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+                {% if user.is_authenticated %}
                     <li class="nav-item">
-                    <a href="{% url 'signup' %}" class="nav-link">Signup</a>
-                </li>
-                </li>
-            </ul>
+                        <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a href="{% url 'main' %}" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'login' %}" class="nav-link">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'signup' %}" class="nav-link">Signup</a>
+                    </li>
+                {% endif %}
+                </ul>
         </div>
     </nav>
 </div>
