@@ -1,5 +1,5 @@
 """
-URL configuration for My_Car project.
+URL configuration for my_car project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -21,6 +21,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("cars/", include('cars.urls')),
+    path("", include('cars.urls')),
     path("users/", include('users.urls')),
 ]

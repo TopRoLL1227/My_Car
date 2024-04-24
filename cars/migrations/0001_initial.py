@@ -51,7 +51,7 @@ class Migration(migrations.Migration):
                     models.ForeignKey(
                         null=True,
                         on_delete=django.db.models.deletion.CASCADE,
-                        to="cars.brand",
+                        to="my_car.brand",
                         verbose_name="brand",
                     ),
                 ),

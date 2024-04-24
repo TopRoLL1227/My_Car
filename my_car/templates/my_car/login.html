@@ -1,0 +1,17 @@
+{% extends 'my_car/base.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+    <h2>Login Page</h2>
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Login">
+    </form>
+{% endblock %}

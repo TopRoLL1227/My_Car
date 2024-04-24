@@ -1,10 +1,11 @@
-{% extends 'cars/base.html' %}
+{% extends 'my_car/base.html' %}
 
 {% block title %}
     Реєстрація нового користувача
 {% endblock %}
 
 {% block content %}
+    {% include 'includes/navbar.html' %}
     <h2>Реєстрація нового користувача</h2>
     <form method="post">
         {% csrf_token %}
