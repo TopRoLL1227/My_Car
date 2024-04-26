@@ -1,5 +1,6 @@
 from django.views.generic import TemplateView, CreateView
+from django.shortcuts import redirect, reverse
 
 
 class MainView(TemplateView):
-    template_name = "cars/main.html"
+    template_name = "my_car/main.html"

@@ -1,4 +1,4 @@
-{% extends 'cars/base.html' %}
+{% extends 'my_car/base.html' %}
 
 {% block title %}
     Реєстрація нового користувача
@@ -6,7 +6,7 @@
 
 {% block content %}
     <h2>Реєстрація нового користувача</h2>
-    <form method="post">
+    <form method='POST'>
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Зареєструватися</button>
