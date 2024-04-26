@@ -1,11 +1,18 @@
 from django.urls import path
-from django.http import HttpResponse
-from django.urls import path
+
 from . import views
-from django.contrib.auth.views import LogoutView
+from cars.views import MainView
+
+app_name = 'users'
 
 urlpatterns = [
-    path("signup/", views.SignUpView.as_view(), name='signup'),
-    path("login/", views.Login.as_view(), name='login'),
-    path("logout/", views.logout_user, name='logout'),
+
+    path('', MainView.as_view(), name="main"),
+
+    path('login', views.LoginInterfaceView.as_view(), name='login'),
+    path('logout', views.LogoutInterfaceView.as_view(), name='logout'),
+    path('signup', views.SignupView.as_view(), name='signup'),
+
+    # path('profile/', ProfileView.as_view(), name='profile'),
+    # path('profile/change_password/', CustomPasswordChangeView.as_view(), name='change_password'),
 ]

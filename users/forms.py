@@ -2,7 +2,7 @@ from django import forms
 from users.models import CustomUser
 
 
-class CarForm(forms.ModelForm):
+class CustomUserCreationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = CustomUser
