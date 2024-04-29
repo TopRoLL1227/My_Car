@@ -35,8 +35,11 @@ class SignupView(CreateView):
 class ProfileView(UpdateView):
     model = CustomUser
     form_class = CustomUserEditForm
-    template_name = 'profile.html'
+    template_name = 'my_car/profile.html'
     success_url = reverse_lazy('users:profile')
+
+    def get_object(self):
+        return self.request.user
 
 
 class CustomPasswordChangeView(PasswordChangeView):
