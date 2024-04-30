@@ -1,25 +1,24 @@
 from django import forms
-from users.models import CustomUser
-from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, UserChangeForm
+from .models import CustomUser
 
 
-class CustomUserCreationForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
+class CustomUserCreationForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = CustomUser
+        fields = UserCreationForm.Meta.fields
+
+
+class CustomUserEditForm(UserChangeForm):
+    password = None
 
     class Meta:
         model = CustomUser
-        fields = ['username', 'password', 'first_name', 'last_name', 'email', 'user_type']
+        fields = ('first_name', 'last_name')
 
 
 class CustomPasswordChangeForm(PasswordChangeForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-
-class CustomUserEditForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ['first_name', 'last_name', 'email', 'user_type']
-
-    def __init__(self, *args, **kwargs):
-        super(CustomUserEditForm, self).__init__(*args, **kwargs)
+        fields = ('old_password', 'new_password1', 'new_password2')
+        

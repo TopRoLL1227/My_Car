@@ -1,0 +1,12 @@
+{% extends 'app_templates/base.html' %}
+
+{% block content %}
+<h2>Profile</h2>
+<form method="post">
+    {% csrf_token %}
+    <p>Username: {{ user.username }}</p>
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+<a href="{% url 'users:change_password' %}" class="btn btn-secondary">Change Password</a>
+{% endblock %}

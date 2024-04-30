@@ -1,6 +1,3 @@
-from django.views.generic import TemplateView, CreateView
-from django.shortcuts import redirect, reverse
+from django.shortcuts import render
 
-
-class MainView(TemplateView):
-    template_name = "my_car/main.html"
+# Create your views here.
