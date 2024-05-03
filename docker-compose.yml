@@ -7,13 +7,15 @@ services:
     container_name: my_car
     restart: always
     environment:
-      POSTGRES_PASSWORD: 898989
-      POSTGRES_USER: tester
-      POSTGRES_DB: my_cars
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_DB: ${DB_NAME}
       PGDATA: /home/ubuntu/postgres/data
       POSTGRES_INITDB_ARGS: "-A md5"
     ports:
-    - "5433:5432"
+      - "5433:5432"
+    env_file:
+      - .env
 
 
 
