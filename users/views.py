@@ -23,7 +23,7 @@ class MainView(TemplateView):
 
 class LoginInterfaceView(LoginView):
     template_name = 'app_templates/login.html'
-    next_page = '/'
+    next_page = 'profile/'
     def get(self, request, *args, **kwargs):
         if self.request.user.is_authenticated:
             return redirect('main')
