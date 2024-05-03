@@ -1,7 +1,15 @@
-FROM python:alpine
+FROM python:3.11
 
-WORKDIR /app
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
-COPY . .
+RUN mkdir /source
+WORKDIR /source
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+COPY . /source/
+COPY ./requirements.txt /usr/src/requirements.txt
+
+RUN pip install -r /usr/src/requirements.txt
+
+COPY ./docker/docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
