@@ -18,6 +18,7 @@ services:
       test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
       interval: 10s
       retries: 5
+    network_mode: host
 
   django:
     build: .
@@ -32,6 +33,7 @@ services:
     env_file:
       - .env
     restart: on-failure
+    network_mode: host
 
 
 
