@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+
+  db:
+    image: postgres:13.3-alpine
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 10s
+      retries: 5
+    network_mode: host
+
+  django:
+    build: .
+    command: /docker-entrypoint.sh python manage.py runserver 0.0.0.0:8088
+    volumes:
+      - .:/source
+    ports:
+      - '8088:8088'
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+    restart: on-failure
+    network_mode: host
+
+
+
+
+
+
